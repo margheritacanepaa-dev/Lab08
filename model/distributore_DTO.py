@@ -16,7 +16,10 @@ class Distributore:
 
     def get_prezzi(self):
         """ Aggiorna e Restituisce la lista di prezzi (self.lista_prezzi) associati al distributore"""
-        # TODO
+        if self.lista_prezzi is None:        # se è vuota, carico i prezzi
+            self.lista_prezzi = PrezzoDAO.get_prezzi(self.id)     # prendo tutti i prezzi con la fz di PrezzoDao (passa l'id corrente)
+        return self.lista_prezzi
+
 
     def __eq__(self, other):
         return isinstance(other, Distributore) and self.id == other.id
